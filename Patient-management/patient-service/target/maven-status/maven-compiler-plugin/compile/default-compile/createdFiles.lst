@@ -3,7 +3,9 @@ billing\BillingServiceOuterClass.class
 billing\BillingServiceGrpc$3.class
 billing\BillingServiceGrpc$BillingServiceImplBase.class
 com\ritam\patientservice\controller\PatientController.class
+patient\events\PatientEventOrBuilder.class
 billing\BillingResponse$1.class
+patient\events\PatientEvent$Builder.class
 com\ritam\patientservice\dto\PatientRequestDTO.class
 billing\BillingServiceGrpc$BillingServiceBaseDescriptorSupplier.class
 com\ritam\patientservice\exception\PatientNotFoundException.class
@@ -18,6 +20,7 @@ billing\BillingRequest.class
 billing\BillingServiceGrpc$1.class
 billing\BillingServiceGrpc$BillingServiceStub.class
 billing\BillingServiceGrpc$BillingServiceFutureStub.class
+patient\events\PatientEvent$1.class
 billing\BillingServiceGrpc$2.class
 com\ritam\patientservice\grpc\BillingServiceGrpcClient.class
 billing\BillingServiceGrpc$MethodHandlers.class
@@ -28,8 +31,11 @@ com\ritam\patientservice\exception\EmailAlreadyExistsException.class
 billing\BillingResponse.class
 billing\BillingServiceGrpc$BillingServiceFileDescriptorSupplier.class
 com\ritam\patientservice\mapper\PatientMapper.class
+com\ritam\patientservice\kafka\KafkaProducer.class
 billing\BillingServiceGrpc$BillingServiceMethodDescriptorSupplier.class
+patient\events\PatientEventOuterClass.class
 billing\BillingResponse$Builder.class
+patient\events\PatientEvent.class
 billing\BillingServiceGrpc.class
 billing\BillingResponseOrBuilder.class
 com\ritam\patientservice\service\PatientService.class
