@@ -4,6 +4,7 @@ import com.ritam.patientservice.dto.PatientRequestDTO;
 import com.ritam.patientservice.dto.PatientResponseDTO;
 import com.ritam.patientservice.exception.EmailAlreadyExistsException;
 import com.ritam.patientservice.exception.PatientNotFoundException;
+import com.ritam.patientservice.grpc.BillingServiceGrpcClient;
 import com.ritam.patientservice.mapper.PatientMapper;
 import com.ritam.patientservice.model.Patient;
 import com.ritam.patientservice.repository.PatientRepository;
@@ -17,10 +18,13 @@ import java.util.UUID;
 
 @Service
 public class PatientService {
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
+    private final BillingServiceGrpcClient billingServiceGrpcClient;
+
     //Dependency  injection
-    public PatientService(PatientRepository patientRepository){
+    public PatientService(PatientRepository patientRepository, BillingServiceGrpcClient billingServiceGrpcClient){
         this.patientRepository= patientRepository;
+        this.billingServiceGrpcClient = billingServiceGrpcClient;
     }
 
     //Read Patients
@@ -37,6 +41,10 @@ public class PatientService {
         }
         Patient newPatient = patientRepository.save(PatientMapper.toModel(patientRequestDTO));
 
+        billingServiceGrpcClient.createBillingAccount(
+                newPatient.getId().toString(),
+                newPatient.getName(),
+                newPatient.getEmail());
         return PatientMapper.toDTO(newPatient);
     }
 
